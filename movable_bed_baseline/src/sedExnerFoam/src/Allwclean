@@ -1,0 +1,12 @@
+#!/bin/sh
+cd "${0%/*}" || exit                            # Run from this directory
+#------------------------------------------------------------------------------
+set -x
+
+wclean libso settlingModels
+wclean libso sedimentBed
+wclean libso projectedFiniteArea
+wclean libso bedloadModels
+wclean libso criticalShieldsModels
+
+#------------------------------------------------------------------------------

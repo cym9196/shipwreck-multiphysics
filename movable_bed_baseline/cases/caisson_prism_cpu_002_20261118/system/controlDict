@@ -1,0 +1,20 @@
+FoamFile {version 2.0; format ascii; class dictionary; object controlDict;}
+
+application sedExnerFoam; startFrom startTime; startTime 0; stopAt endTime;
+endTime 0.02; deltaT 0.001;
+writeControl adjustableRunTime; writeInterval 0.01; purgeWrite 0;
+writeFormat binary; writePrecision 16; timeFormat general; timePrecision 12;
+writeCompression off; runTimeModifiable true;
+adjustTimeStep true; maxCo .2; maxDeltaT 0.001;
+libs ("libroughWallFunctions.so");
+functions
+{
+ wallShearStress1 {type wallShearStress; libs (fieldFunctionObjects);
+   patches (bed caissonSides caissonTop); writeControl writeTime;}
+ suspendedInventory {type volFieldValue; libs (fieldFunctionObjects);
+   operation volIntegrate; fields (Cs); writeFields false;
+   writeControl timeStep; writeInterval 1;}
+ probes1 {type probes; libs (sampling); fields (U p k omega Cs);
+   writeControl timeStep; writeInterval 1;
+   probeLocations ((-.22 -.12 .01) (-.22 .12 .01) (.3 0 .02) (1 0 .05));}
+}

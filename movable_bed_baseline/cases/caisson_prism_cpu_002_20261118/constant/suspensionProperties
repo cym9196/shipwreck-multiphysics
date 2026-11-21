@@ -1,0 +1,5 @@
+FoamFile {version 2.0; format ascii; class dictionary; object suspensionProperties;}
+
+suspension on; MULESformulation off; diffusivity turbulent;
+wallDiffusivity {alpha 5e-6; beta 5;}
+fallModel {type Fredsoe;} hindranceModel {type none;} CsbMax .1;

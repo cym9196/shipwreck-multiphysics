@@ -1,0 +1,21 @@
+FoamFile {version 2.0; format ascii; class dictionary; object fvSolution;}
+
+solvers
+{
+ p {solver PCG; preconditioner DIC; tolerance 1e-8; relTol .01; maxIter 10000;}
+ pFinal {$p; tolerance 1e-9; relTol 0;}
+ pcorr {$p; tolerance 1e-9; relTol 0;}
+ pcorrFinal {$pcorr;}
+ "(U|k|omega)" {solver PBiCGStab; preconditioner DILU; tolerance 1e-8; relTol .01;}
+ "(U|k|omega)Final" {solver PBiCGStab; preconditioner DILU; tolerance 1e-9; relTol 0;}
+ Cs {solver PBiCGStab; preconditioner DILU; tolerance 1e-10; relTol 0;}
+ CsFinal {$Cs;}
+ cellDisplacement {solver GAMG; tolerance 1e-10; relTol 0; maxIter 1000;
+  smoother DICGaussSeidel; agglomerator faceAreaPair; cacheAgglomeration true;
+  nCellsInCoarsestLevel 30; mergeLevels 1;}
+ cellDisplacementFinal {$cellDisplacement;}
+}
+PIMPLE {momentumPredictor true; nOuterCorrectors 2; nCorrectors 2;
+ nNonOrthogonalCorrectors 0; correctPhi true; checkMeshCourantNo true;
+ moveMeshOuterCorrectors false;}
+relaxationFactors {equations {".*" 1;}}

@@ -1,0 +1,8 @@
+build/
+runs/
+logs/
+toolchain/
+deliverables/
+__pycache__/
+*.py[cod]
+.venv/

@@ -1,0 +1,13 @@
+FoamFile {version 2.0; format ascii; class dictionary; object topoSetDict;}
+
+actions
+(
+ {name lowerCells; type cellSet; action new; source boxToCell; box (-10 -10 -1) (10 10 .199999999);}
+ {name lowerBedZone; type cellZoneSet; action new; source setToCellZone; set lowerCells;}
+ {name lowerFaces; type faceSet; action new; source cellToFace; set lowerCells; option all;}
+ {name lowerTop; type faceSet; action new; source faceToFace; set lowerFaces;}
+ {name lowerTop; type faceSet; action subset; source boxToFace; box (-10 -10 .199999999) (10 10 .200000001);}
+ {name lowerTopZone; type faceZoneSet; action new; source setToFaceZone; faceSet lowerTop;}
+ {name bedFaces; type faceSet; action new; source patchToFace; patch bed;}
+ {name bedZone; type faceZoneSet; action new; source setToFaceZone; faceSet bedFaces;}
+);

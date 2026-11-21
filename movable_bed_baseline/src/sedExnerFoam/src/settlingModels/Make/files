@@ -1,0 +1,13 @@
+settlingModel.C
+hindranceModel/hindranceModel.C
+hindranceModel/Zaki/Zaki.C
+hindranceModel/ZakiModified/ZakiModified.C
+hindranceModel/none/none.C
+fallModel/fallModel.C
+fallModel/fixedValue/fixedValue.C
+fallModel/Fredsoe/Fredsoe.C
+fallModel/Rubey/Rubey.C
+fallModel/Soulsby/Soulsby.C
+fallModel/Stokes/Stokes.C
+
+LIB = $(FOAM_USER_LIBBIN)/libsettlingModels

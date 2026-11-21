@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "template_case": "cases/caisson_prism_cpu_002_20261118",
+  "ranks": 6,
+  "defaults": {
+    "stl": "hull_generic_shipwreck.stl",
+    "flow": "inflow_smoke.csv",
+    "depth": 4,
+    "end": 0.006,
+    "dt": 0.001,
+    "domain_span": 11,
+    "burial": 0.1,
+    "initial_cs": 0.0005,
+    "restitution": 0.5,
+    "friction": 0.3
+  },
+  "cases": [
+    {"name": "hull10_yaw0", "length": 10, "yaw": 0},
+    {"name": "hull6_yaw45", "length": 6, "yaw": 45},
+    {"name": "hull10_yaw0_elastic", "length": 10, "yaw": 0, "restitution": 1, "friction": 0},
+    {"name": "hull10_yaw0_off", "length": 10, "yaw": 0, "impact_model": "off"}
+  ]
+}

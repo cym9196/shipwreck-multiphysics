@@ -1,0 +1,10 @@
+FoamFile {version 2.0; format ascii; class dictionary; object bedloadProperties;}
+
+sedimentBed on; bedMotion on; sedimentBedPatches (bed);
+writeSedimentBudget true;
+conservativeFixedPointProjection true;
+morphoAccFactor 1; ABorder 0;
+filterShields off; filterExner off;
+fixedFaPatches (inletFa outletFa);
+bedloadModel {type MeyerPeter; coefShields 1; avalanche on;}
+criticalShieldsModel {type Soulsby;}
